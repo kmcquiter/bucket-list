@@ -15,23 +15,26 @@ console.log(firstLi);
     Hint 3: You will need to use .innerText
 */
 
-
-
-
-
+let all_Li_Elements = document.querySelector('li');
+for(let i = 0; i < all_Li_Elements.length; i++){
+    all_Li_Elements[i].innerText += ".";
+}
 
 
 /* 1.3) Print the first list item from Gandalf's bucket list. 
     Hint 1: First select the div associated with Gandalf's bucket list.
 */
 
-
-
+gDiv = document.querySelector("#gandalf-list");
+firstLi = gDiv.querySelector('li').textContent;
+console.log(firstLi);
 
 /* 1.4) Change the color of first list item from Gandalf's bucket list to Red.
     Hint 1: You have already selected this list element from previous part.
 */
 
+gDiv = document.querySelector("#gandalf-list");
+firstLi = gDiv.querySelector('li').style.color = 'red';
 
 
 /* 1.5) Add a new item in Frodo's bucket list. 
@@ -40,12 +43,17 @@ console.log(firstLi);
     Hint 2: Use .append() 
 */
 
-
+let newFlistItem = document.createElement("li");
+newFlistItem.innerText = "Sail Off With the Elves.";
+document.querySelector("#frodo-list ul").appendChild(newFlistItem);
 
 /* 1.5) Remove the first item from Frodo's bucket list.
     Hint 1: First select the item
     Hint 2: Use .remove() 
 */
+
+let firstFlistItem = document.querySelector("#frodo-list ul").children[0];
+firstFlistItem.remove();
 
 
 ////////////// Part 2 (DOM Traversal) /////////////////////
@@ -55,21 +63,20 @@ console.log(firstLi);
     Hint 2: use  .children 
 */
 
-let glist = document.querySelector('#gandalf-list');
+let gList = document.querySelector('#gandalf-list').children;
 
-console.log(glist.children);
+console.log(gList);
 
 
 /* 2.2) Print the first child of the div with id="frodo-list" */
 
-let flist = document.querySelector('#frodo-list');
+let fList = document.querySelector('#frodo-list').children[0];
 
-console.log(flist.firstElementChild);
 
 /* 2.3) Print the last child of the div with id="gandalf-list" */ 
 //let glist = document.querySelector('#gandalf-list');
 
-console.log(glist.lastElementChild);
+console.log(document.querySelector("#gandalf-list").lastElementChild);
 
 
 /* 2.4) Print the 2nd last child of the div with id="gandalf-list" 
@@ -77,15 +84,13 @@ console.log(glist.lastElementChild);
     Hint 2: Then use  .previousElementSibling to get the 2nd last child
 */ 
 
-//let glist = document.querySelector('#gandalf-list');
-
-console.log(glist.previousElementSibling);
+console.log(document.querySelector("#gandalf-list").lastElementChild.previousElementSibling);
 
 /* 2.4) Find the parent element of the div with id="frodo-list" */
 
 //let flist = document.querySelector('#frodo-list');
 
-console.log(flist.parentElement);
+console.log(document.querySelector("#frodo-list").parentElement);
 
 
 ////////////// BONUS /////////////////////
@@ -98,13 +103,12 @@ console.log(flist.parentElement);
 
 
 const toFind = 'Become a White Wizard';
-allLiElements = document.querySelectorAll('li');
+let allLiElements = document.querySelectorAll('li');
 
 
 for(let i=0; i < allLiElements.length; i++){
     if(allLiElements[i].innerText === toFind){
         let grandparent = allLiElements[i].parentElement.parentElement;
-        console.log(grandparent);
         console.log(grandparent.firstElementChild);
 }
 }
